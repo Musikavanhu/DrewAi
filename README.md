@@ -1,6 +1,6 @@
 # Drew AI
 
-A smart AI travel and chat agent powered by Hugging Face through a local backend proxy.
+A smart AI travel and chat agent powered by Hugging Face through a backend proxy.
 
 ---
 
@@ -52,19 +52,9 @@ Vite auto-proxies `/api/*` to the backend — no CORS issues, no exposed keys.
 | `HF_MODEL` | Hugging Face chat model id | `meta-llama/Llama-3.1-8B-Instruct:fastest` |
 | `PORT` | Port for the proxy server | `3001` |
 
-> ⚠️ **Never commit `server/.env`** — it's in `.gitignore`. Share config via `server/.env.example` only.
+> 
 
 If you need the previous local setup for comparison, the server also understands `AI_PROVIDER=lm-studio` plus `LM_STUDIO_URL` and `LM_MODEL`.
-
----
-
-## Features
-
-- 💬 **Persistent chat history** — multi-chat with localStorage
-- 🧠 **Personal memory** — auto-extracts and injects facts about you
-- ✈️ **Trip Agent** — NLP trip intake → confidence scoring → fragility map
-- ⚡ **Recovery Mode** — simulates disruptions, generates 3 recovery paths
-- 🔒 **Secure by default** — the Hugging Face token never reaches the browser
 
 ---
 

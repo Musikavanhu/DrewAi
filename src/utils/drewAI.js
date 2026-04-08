@@ -13,7 +13,6 @@ import { formatMemoriesForPrompt } from './memoryManager'
 // All requests go to the backend proxy — never directly to Hugging Face.
 // The server injects the real provider URL, token, and model from server/.env.
 const API_URL = '/api/chat'
-const LOCAL_SERVER_URL = 'http://localhost:3001'
 
 const DREW_BASE_PROMPT = `You are Drew, a focused and concise AI assistant. Follow these rules strictly:
 
@@ -68,14 +67,14 @@ async function readProxyError(response) {
 
 function formatProxyFailure(err) {
   if (err.message.includes('Failed to fetch') || err.message.includes('NetworkError')) {
-    return `⚠️ I can't reach the local AI server right now. Make sure the backend is running on \`${LOCAL_SERVER_URL}\`.`
+    return `⚠️ I can't reach the backend service right now. Please ensure the server is online and configured.`
   }
 
   if (err.message.includes('HF_API_KEY')) {
-    return '⚠️ The backend is not configured for Hugging Face yet. Add `HF_API_KEY` to `server/.env` and restart the server.'
+    return '⚠️ The backend is not configured with an AI provider key. Please check your environment variables.'
   }
 
-  return `⚠️ Something went wrong: ${err.message}`
+  return `⚠️ AI Service Error: ${err.message}`
 }
 
 /**
